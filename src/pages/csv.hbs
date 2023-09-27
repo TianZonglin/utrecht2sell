@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ResaleHub</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <meta property="og:author" content="Zonglin" />
+    <meta property="og:description" content="Sell second-hands productions" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://cdn.glitch.global/f1c7b686-0e39-43f2-8186-adb49d7f1137/icons8-radioactive-windows-11-color-32.png?v=1689634064746"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/wingcss" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/lightbox2@2.11.4/dist/css/lightbox.min.css"
+      rel="stylesheet"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.1.1.min.js"
+      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/lightbox2@2.11.4/dist/js/lightbox.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        lightbox.option({
+          resizeDuration: 100,
+          wrapAround: true,
+          albumLabel: "",
+        });
+        fetch(
+          "https://docs.google.com/spreadsheets/d/e/2PACX-1vT5AeaNQiGQU8WYNKagxCiwFp36LRaX0w06oFleiz14NNb0_YgVxY2VpP8C4PeBi2gu6qwwcC8IlzZA/pub?gid=0&single=true&output=csv"
+        )
+          .then((response) => response.text())
+          .then((data) => {
+            let flag =
+              (iNo =
+              iClass =
+              iTime =
+              iName =
+              iPrice =
+              iPackage =
+              iTags =
+              iFresh =
+              iAppearance =
+              iStatus =
+                0);
+            let jarr = [];
+            let sold = 0;
+            let lines = data.split("\n");
+            let arr = lines[0].split(",");
+            for (let i = 0; i < arr.length; i++) {
+              switch (arr[i]) {
+                case "NO":
+                  iNo = i;
+                  break;
+                case "分类":
+                  iClass = i;
+                  break;
+                case "时间":
+                  iTime = i;
+                  break;
+                case "名称":
+                  iName = i;
+                  break;
+                case "总价/欧元":
+                  iPrice = i;
+                  break;
+                case "包装":
+                  iPackage = i;
+                  break;
+                case "主题分类":
+                  iTags = i;
+                  break;
+                case "新旧/全新1.0":
+                  iFresh = i;
+                  break;
+                case "外观":
+                  iAppearance = i;
+                  break;
+                case "状态":
+                  iStatus = i;
+                  break;
+                default:
+                  console.log("Unknown.");
+              }
+            }
+              $("#alllist").append(
+                "序号,&nbsp;分类,&nbsp;时间,&nbsp;名称,&nbsp;总价/欧元,&nbsp;包装,&nbsp;主题分类,&nbsp;新旧/全新1.0,&nbsp;外观,&nbsp;状态,&nbsp;<br>"
+              );
+              
+              for (let i = 1; i < lines.length; i++) {
+                let items = lines[i].split(",");
+                let no = items[iNo];
+                if(parseInt(no)<10) no = "00"+no;
+                else if(parseInt(no)<100) no = "0"+no;
+                console.log(no);
+                if (items[iStatus] == "SOLD"){
+                  sold++;
+                  $("#alist").append(
+                    "<span style='color:red'>No." +
+                      no +
+                      ",&nbsp;" +
+                      items[iClass] +
+                      ",&nbsp;" +
+                      items[iTime] +
+                      ",&nbsp;" +
+                      items[iName] +
+                      ",&nbsp;" +
+                      items[iPrice] +
+                      ",&nbsp;" +
+                      items[iPackage] +
+                      ",&nbsp;" +
+                      items[iTags] +
+                      ",&nbsp;" +
+                      items[iFresh] +
+                      ",&nbsp;" +
+                      items[iAppearance] +
+                      ",&nbsp;" +
+                      items[iStatus] +
+                      ",&nbsp;</span><br>"
+                  );
+                }
+
+                else
+                  $("#alist").append("No." +
+                    no +
+                    ",&nbsp;" +
+                      items[iClass] +
+                      ",&nbsp;" +
+                      items[iTime] +
+                      ",&nbsp;" +
+                      items[iName] +
+                      ",&nbsp;" +
+                      items[iPrice] +
+                      ",&nbsp;" +
+                      items[iPackage] +
+                      ",&nbsp;" +
+                      items[iTags] +
+                      ",&nbsp;" +
+                      items[iFresh] +
+                      ",&nbsp;" +
+                      items[iAppearance] +
+                      ",&nbsp;" +
+                      items[iStatus] +
+                      ",&nbsp;<br>"
+                  );
+ 
+              }
+            let currentDate = new Date();
+            let dateString = currentDate.toDateString();
+            $("#cnt").html(
+              "物品总数: " +
+                (lines.length-1) +
+                "(" +
+                sold +
+                "), 地址: 3552AS <a style='float:right'>更新: " +
+                  currentDate.toDateString() +"</a>"
+            );
+          })
+          .catch((error) => {
+            console.log("Error:", error);
+          });
+        
+
+          $("body").show();
+       
+      });
+    </script>
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DQ8JDKPTYQ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-DQ8JDKPTYQ');
+    </script>
+    <!-- Hotjar Tracking Code for https://ieee.glitch.me/ -->
+    <script>
+        (function(h,o,t,j,a,r){
+            h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+            h._hjSettings={hjid:3580822,hjsv:6};
+            a=o.getElementsByTagName('head')[0];
+            r=o.createElement('script');r.async=1;
+            r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+    </script>
+    
+  </head>
+  <body style="font-size: 13px; line-height: 15px">
+ 
+     <div class="navbk" >
+       
+      <div class="navbar"><br><br>
+        <a>主页 (ieee.glitch.me, Chinese only)</a>&nbsp;&nbsp;\&nbsp;
+        <a class="inav" href="/all.html">全部物品</a>&nbsp;&nbsp;\&nbsp;
+        <a class="inav" href="/csv.html"><b>列表模式</b></a> 
+        <a class="inav" id="enav" style="float:right" href="https://translate.google.com/translate?sl=auto&tl=en&u=https://ieee.glitch.me/all.html" target="_blank">EN</a> 
+      <hr />
+      </div>
+    </div>
+    <br /> 
+    
+    <div id="container">
+    
+    
+    
+    <div id="alist" style="padding-top: 50px;"></div>
+    <br />
+    <span style="font-size: 13px">联系方式：</span> <br />
+    <div style="display: inline-block; margin-top: 5px">
+      <div class="ibox2">
+        <img
+          src="https://cdn.glitch.global/f1c7b686-0e39-43f2-8186-adb49d7f1137/20230718003042.png?v=1689633083324"
+          height="100"
+        /><br />
+        <button class="btnc outline" id="wechat" style="line-height: 20px">
+          <a href="weixin://" target="_blank">微信</a>
+        </button>
+      </div>
+      <div class="ibox2">
+        <img
+          src="https://cdn.glitch.global/f1c7b686-0e39-43f2-8186-adb49d7f1137/20230718003054.jpg?v=1689633074371"
+          height="100"
+        /><br />
+        <button class="btnc outline" id="whatsapp" style="line-height: 20px">
+          <a href="https://api.whatsapp.com/send?phone=31620727621" target="_blank">WhatsApp</a>
+        </button>
+      </div>
+    </div>
+    <br />
+
+    <hr />
+    <div id="cnt"></div>
+    <br />
+  </body>
+
+</html>

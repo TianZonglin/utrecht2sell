@@ -583,7 +583,7 @@ $(document).ready(function () {
         }
         $("#enav").attr(
           "href",
-          "https://translate.google.com/translate?sl=auto&tl=en&u=https://ieee.glitch.me/csv.html"
+          "https://translate.google.com/translate?sl=auto&tl=en&u=https://u2s.glitch.me/csv.html"
         );
         $("#enav").show();
         if (isWeChatBrowser()) {
@@ -605,7 +605,7 @@ $(document).ready(function () {
         $(".text").hide();
         $("#enav").attr(
           "href",
-          "https://translate.google.com/translate?sl=auto&tl=en&u=https://ieee.glitch.me/all.html"
+          "https://translate.google.com/translate?sl=auto&tl=en&u=https://u2s.glitch.me/all.html"
         );
         $("#enav").show();
         $("#blist").html("");
@@ -1012,7 +1012,7 @@ $(document).ready(function () {
             "</a>"
         );
       }else{
-        $("body").html("<br><br><a style='color:blue' href='https://ieee.glitch.me/?t=%E8%BF%90%E5%8A%A8,%E6%BA%9C%E5%86%B0,%E7%BB%98%E7%94%BB,%E6%89%8B%E5%B7%A5,%E5%A4%96%E5%87%BA%E8%AE%BE%E5%A4%87'>目前仅开放部分内容 => &#x1F604;</a>");
+        $("body").html("<br><br><a style='color:blue' href='https://u2s.glitch.me/?t=%E8%BF%90%E5%8A%A8,%E6%BA%9C%E5%86%B0,%E7%BB%98%E7%94%BB,%E6%89%8B%E5%B7%A5,%E5%A4%96%E5%87%BA%E8%AE%BE%E5%A4%87'>目前仅开放部分内容 => &#x1F604;</a>");
  
           
       }
@@ -1033,7 +1033,7 @@ $(document).ready(function () {
         alert("您未选择任何物品。");
       }else{
         try {
-          let textToCopy = "https://ieee.glitch.me/sold.htm?v="
+          let textToCopy = "https://u2s.glitch.me/sold.htm?v="
                 +$.map(storeid, function (e) { return e}).join(",");
 
           // 创建一个临时的 textarea 元素
