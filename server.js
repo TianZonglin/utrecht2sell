@@ -29,6 +29,19 @@ fastify.register(require("@fastify/view"), {
   },
 });  
 
+
+
+
+      
+
+
+
+
+
+
+
+
+
 // Load and parse SEO data
 const seo = require("./src/seo.json");
 if (seo.url === "glitch-default") {
@@ -71,7 +84,7 @@ fastify.get("/", function (request, reply) {
 fastify.post("/", function (request, reply) {
   // Build the params object to pass to the template
   let params = { seo: seo };
-
+  /** 
   // If the user submitted a color through the form it'll be passed here in the request body
   let color = request.body.color;
 
@@ -100,11 +113,25 @@ fastify.post("/", function (request, reply) {
         seo: seo,
       };
     }
-  }
+  }**/
 
   // The Handlebars template will use the parameter values to update the page with the chosen color
   return reply.view("/src/pages/index.hbs", params);
 });
+
+fastify.get("/csv", function (request, reply) {
+  
+    fetch(
+    "https://docs.google.com/spreadsheets/d/e/2PACX-1vT5AeaNQiGQU8WYNKagxCiwFp36LRaX0w06oFleiz14NNb0_YgVxY2VpP8C4PeBi2gu6qwwcC8IlzZA/pub?gid=0&single=true&output=csv"
+  )
+    .then((response) => response.text())
+    .then((data) => {
+    console.log();
+  });
+  
+ return reply.view("/src/pages/csv.hbs", params);
+});
+
 
 // Run the server and report out to the logs
 fastify.listen(
