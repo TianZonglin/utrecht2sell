@@ -5,6 +5,7 @@ $(document).ready(function () {
   let storec = null;
   let storet = null;
   let stored = null;
+  let storejarr = null;
 
   let storetmp = null;
   let storefunc = null;
