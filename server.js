@@ -35,6 +35,11 @@ if (seo.url === "glitch-default") {
   seo.url = `https://${process.env.PROJECT_DOMAIN}.glitch.me`;
 }
 
+fastify.get("/home", function (request, reply) {
+  let params = { _0x66acf: "https://docs.google.com/spreadsheets/d/e/2PACX-1vT5AeaNQiGQU8WYNKagxCiwFp36LRaX0w06oFleiz14NNb0_YgVxY2VpP8C4PeBi2gu6qwwcC8IlzZA/pub?gid=0&single=true&output=csv" };
+  return reply.view("/src/pages/index.hbs", params);
+});
+
 
 fastify.get("/", function (request, reply) {
   let params = { _0x66acf: "https://docs.google.com/spreadsheets/d/e/2PACX-1vT5AeaNQiGQU8WYNKagxCiwFp36LRaX0w06oFleiz14NNb0_YgVxY2VpP8C4PeBi2gu6qwwcC8IlzZA/pub?gid=0&single=true&output=csv" };

