@@ -36,7 +36,7 @@ if (seo.url === "glitch-default") {
 }
 
 fastify.get("/home", function (request, reply) {
-  let params = { _0x66acf: "https://docs.google.com/spreadsheets/d/e/2PACX-1vT5AeaNQiGQU8WYNKagxCiwFp36LRaX0w06oFleiz14NNb0_YgVxY2VpP8C4PeBi2gu6qwwcC8IlzZA/pub?gid=0&single=true&output=csv" };
+  let params = { _0x66acf: "https://docs.google.com/spreadsheets/d/e/2PACX-1vT5AeaNQiGQU8WYNKagxCiwFp36LRaX0w06oFleiz14NNb0_YgVxY2VpP8C4PeBi2gu6qwwcC8IlzZA/pub?gid=0&single=true&output=csv", x:"q" };
   return reply.view("/src/pages/index.hbs", params);
 });
 

@@ -38,7 +38,7 @@ $(document).ready(function () {
       .replaceAll(" ", "")
       .split(",");
   } 
-  
+  console.log({{_0x66acf}}));
 
   fetch(up.get("_0x66acf"))
     .then((response) => response.text())
