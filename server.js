@@ -27,7 +27,7 @@ fastify.register(require("@fastify/view"), {
   engine: {
     handlebars: require("handlebars"),
   },
-});
+});  
 
 // Load and parse SEO data
 const seo = require("./src/seo.json");
