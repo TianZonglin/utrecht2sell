@@ -521,36 +521,36 @@ $(document).ready(function () {
         $("#alist").append(
           "序号,&nbsp;用户,&nbsp;分类,&nbsp;新旧/全新1.0,&nbsp;名称,&nbsp;总价/欧元,&nbsp;可售时间,&nbsp;包装,&nbsp;主题分类,&nbsp;外观,&nbsp;状态,&nbsp;<br>"
         );
-        console.log(jarr);
-        for (let i = 0; i < jarr.length; i++) {
+        conso//le.log(jarr);
+        for (let i = 0; i < jarr.storelength; i++) {
 
-          let no = jarr[i].iNo;
+          let no = jarr[storejarrNo;
           if (parseInt(no) < 10) no = "00" + no;
           else if (parseInt(no) < 100) no = "0" + no;
-          if (jarr[i].iStatus == "SOLD")
+          if (jarr[storejarrStatus == "SOLD")
             $("#alist").append(
               "<span style='color:red'>No." +
                 no +
                 ",&nbsp;" +                
-                jarr[i].iUsers +
+                jarr[storejarrUsers +
                 ",&nbsp;" +
-                jarr[i].iClass +
+                     storejarr[i].iClass +
+           ",&nbsp;" +
+                getFresh2(jarr[storejarrFresh) +
                 ",&nbsp;" +
-                getFresh2(jarr[i].iFresh) +
+                jarr[storejarrName +
                 ",&nbsp;" +
-                jarr[i].iName +
+                jarr[storejarrPrice +
                 ",&nbsp;" +
-                jarr[i].iPrice +
+                jarr[storejarrTime +
                 ",&nbsp;" +
-                jarr[i].iTime +
+                jarr[storejarrPackage +
                 ",&nbsp;" +
-                jarr[i].iPackage +
+                jarr[storejarrTags +
                 ",&nbsp;" +
-                jarr[i].iTags +
+                jarr[storejarrAppearance +
                 ",&nbsp;" +
-                jarr[i].iAppearance +
-                ",&nbsp;" +
-                jarr[i].iStatus +
+                jarr[storejarrStatus +
                 ",&nbsp;</span><br>"
             );
           else
@@ -558,25 +558,25 @@ $(document).ready(function () {
               "No." +
                 no +
                 ",&nbsp;" +                
-                jarr[i].iUsers +
+                jarr[storejarrUsers +
                 ",&nbsp;" +
-                jarr[i].iClass +
+                jarr[storejarrClass +
                 ",&nbsp;" +
-                getFresh2(jarr[i].iFresh) +
+                getFresh2(jarr[storejarrFresh) +
                 ",&nbsp;" +
-                jarr[i].iName +
+                jarr[storejarrName +
                 ",&nbsp;" +
-                jarr[i].iPrice +
+                jarr[storejarrPrice +
                 ",&nbsp;" +
-                jarr[i].iTime +
+                jarr[storejarrTime +
                 ",&nbsp;" +
-                jarr[i].iPackage +
+                jarr[storejarrPackage +
                 ",&nbsp;" +
-                jarr[i].iTags +
+                jarr[storejarrTags +
                 ",&nbsp;" +
-                jarr[i].iAppearance +
+                jarr[storejarrAppearance +
                 ",&nbsp;" +
-                jarr[i].iStatus +
+                jarr[storejarrStatus +
                 ",&nbsp;<br>"
             );
         }
@@ -604,7 +604,7 @@ $(document).ready(function () {
         $(".text").hide();
         $("#enav").attr(
           "href",
-          "https://translate.google.com/translate?sl=auto&tl=en&u=https://u2s.glitch.me/all.html"
+          "https://translate.google.com/translate?sl=auto&tl=en&u=https://u2s.glitch.me/all.h_tml"
         );
         $("#enav").show();
         $("#blist").html("");
