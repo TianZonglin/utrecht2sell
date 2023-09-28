@@ -783,9 +783,9 @@ $(document).ready(function () {
 
               htm += '<span class="intro" style="">€' + pt + "</span></div>";
               htm +=
-                '<div class="text-overlay-user"><b><span style="color:#8080804f">#' +
+                '<div class="text-overlay-user"><b><span style="color:#00000080">#' +
                 v.iUsers +
-                "**的物品</span></div>";
+                "**</span></div>";
             
             
               if (v.iStatus != "SOLD" && storetag==null && storeclass==null )
@@ -896,9 +896,9 @@ $(document).ready(function () {
                   '"/>';
             
               htm +=
-                '<div class="text-overlay-user" style="font-size:5px !important;color:#000;bottom:4px !important;right:4px !important;"><b><span>#' +
+                '<div class="text-overlay-user" style="font-size:5px !important;color:#00000080;bottom:4px !important;right:4px !important;"><b><span>#' +
                 v.iUsers +
-                "**'s item</span></div>";
+                "**</span></div>";
             
               htm += "</div>";
 
@@ -1043,7 +1043,7 @@ $(document).ready(function () {
         alert("您未选择任何物品。");
       }else{
         try {
-          let textToCopy = "https://u2s.glitch.me/sold.htm?v="
+          let textToCopy = "https://u2s.glitch.me/?v="
                 +$.map(storeid, function (e) { return e}).join(",");
 
           // 创建一个临时的 textarea 元素
