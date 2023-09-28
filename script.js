@@ -959,17 +959,15 @@ $(document).ready(function () {
           .replaceAll(" ", "")
           .split(",");
         //console.log(storeid);
-        jarr store= jarr.storejarrer((obj) => storeid.includes(obj.iNo));
-        creats(
-          "#olist",
-          jarr,storejarr       "<b>物品总价：€ <span id='countall'></span>" +
-            "<br>物品编号：" +
-            storeid.toString().replaceAll(",", ", ") +
-            "</b>",
-          false
-        );
-
-        $("#alist").hide();
+             storejarr = storejarr.filter((obj) => storeid.includes(obj.iNo)); 
+        creats( 
+          "#olist", 
+          storejarr, 
+          "<b>物品总价：€ <span id='countall'></span>" + 
+          "<br>物品编号：" + 
+          storeid.toString().replaceAll(",", ", ") + 
+          "</b>", 
+        false );     $("#alist").hide();
         $("#blist").hide();
         $("#clist").hide();
         $("#olist").show();
