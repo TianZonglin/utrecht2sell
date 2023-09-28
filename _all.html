@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ResaleHub</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <meta property="og:author" content="Zonglin" />
+    <meta property="og:description" content="Sell second-hands productions" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://cdn.glitch.global/f1c7b686-0e39-43f2-8186-adb49d7f1137/icons8-radioactive-windows-11-color-32.png?v=1689634064746"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/wingcss" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/lightbox2@2.11.4/dist/css/lightbox.min.css"
+      rel="stylesheet"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.1.1.min.js"
+      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/lightbox2@2.11.4/dist/js/lightbox.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        
+        let storeid = [];
+        let storec = null;
+        let storet = null;
+        let stored = null;
+        lightbox.option({
+          resizeDuration: 100,
+          wrapAround: true,
+          albumLabel: "",
+        });
+        fetch(
+          "https://docs.google.com/spreadsheets/d/e/2PACX-1vT5AeaNQiGQU8WYNKagxCiwFp36LRaX0w06oFleiz14NNb0_YgVxY2VpP8C4PeBi2gu6qwwcC8IlzZA/pub?gid=0&single=true&output=csv"
+        )
+          .then((response) => response.text())
+          .then((data) => {
+            let flag =
+              (iNo =
+              iClass =
+              iTime =
+              iName =
+              iPrice =
+              iPackage =
+              iTags =
+              iFresh =
+              iAppearance =
+              iStatus =
+                0);
+            let jarr = [];
+            let lines = data.split("\n");
+            let arr = lines[0].split(",");
+            for (let i = 0; i < arr.length; i++) {
+              switch (arr[i]) {
+                case "NO":
+                  iNo = i;
+                  break;
+                case "分类":
+                  iClass = i;
+                  break;
+                case "时间":
+                  iTime = i;
+                  break;
+                case "名称":
+                  iName = i;
+                  break;
+                case "总价/欧元":
+                  iPrice = i;
+                  break;
+                case "包装":
+                  iPackage = i;
+                  break;
+                case "主题分类":
+                  iTags = i;
+                  break;
+                case "新旧/全新1.0":
+                  iFresh = i;
+                  break;
+                case "外观":
+                  iAppearance = i;
+                  break;
+                case "状态":
+                  iStatus = i;
+                  break;
+                default:
+                  console.log("Unknown.");
+              }
+            }
+            for (let i = 1; i < lines.length; i++) {
+              let items = lines[i].split(",");
+              jarr.push({
+                iNo: items[iNo],
+                iClass: items[iClass],
+                iTime: items[iTime],
+                iName: items[iName],
+                iPrice: items[iPrice],
+                iPackage: items[iPackage],
+                iTags: items[iTags],
+                iFresh: items[iFresh],
+                iAppearance: items[iAppearance],
+                iStatus: items[iStatus],
+              });
+            }
+            jarr.sort(function (a, b) {
+              var propertyA = parseInt(a.iPrice);
+              var propertyB = parseInt(b.iPrice);
+              if (propertyA < propertyB) return 1;
+              if (propertyA > propertyB) return -1;
+              return 0;
+            });
+    
+
+            let count = jarr.filter(function (obj) {
+              return obj.iStatus == "SOLD";
+            }).length;
+
+          
+          
+            let currentDate = new Date();
+            let dateString = currentDate.toDateString();
+            $("#cnt").html(
+              "物品总数: " +
+                jarr.length +
+                "(" +
+                count +
+                "), 地址: 3552AS <a style='float:right'>更新: " +
+                  currentDate.toDateString() +"</a>"
+            );
+           
+          
+            let itemsPerBatch = 13; // 每批加载的数量
+            let loadedItems = 0; // 已加载的数量
+            if (window.innerWidth < 768) {
+              itemsPerBatch = 5;
+            }
+            $("#all_content").html("");
+            creats("#all_content", jarr, "按品类排序：", true);
+          
+
+ 
+
+
+
+            
+            function getFresh(number) {
+              const chineseNumberMap = {
+                1: "一成新",
+                2: "二成新",
+                3: "三成新",
+                4: "四成新",
+                5: "五成新",
+                6: "六成新",
+                7: "七成新",
+                8: "八成新",
+                9: "九成新",
+                10: "全新",
+              };
+
+              return chineseNumberMap[number * 10] || "";
+            }    
+          
+
+            $(window).on("scroll", () => {
+              const scrollPosition = $(window).scrollTop();
+              const windowHeight = $(window).height();
+              const documentHeight = $(document).height();
+              if (
+                scrollPosition + windowHeight >= documentHeight - 150
+              ) {
+                creats("#all_content", jarr, "按品类排序：", true);
+              } 
+            });
+            $("body").on("click", "#appendmore", function () {
+                creats("#all_content", jarr, "按品类排序：", true);
+
+            });
+          
+            function creats(ct, tmp, txt, mx) {
+              let tmp_l = tmp.length;
+              let htmltext = "";
+              txt = '<span style="font-size: 13px">' + txt + "</span><br><br>";
+              if (mx) {
+                tmp = tmp.slice(loadedItems, loadedItems + itemsPerBatch);
+                console.log(tmp);
+                if (tmp.length == 0 || loadedItems != 0) txt = "";
+              } else {
+                if (tmp.length == 0) txt = "";
+              }
+              if (window.innerWidth < 768) {
+                htmltext =
+                  txt +
+                  $.map(tmp, function (v) {
+                    let pt = v.iPrice;
+
+                    if (v.iTime == "Oct") pt = v.iPrice + " / get it after 10.1";
+                    if (v.iStatus == "SOLD")
+                      pt = v.iPrice + "<span style='color:red'> (SOLD)</span>";
+
+                    let no = v.iNo;
+                    if (parseInt(no) < 10) no = "00" + no;
+                    else if (parseInt(no) < 100) no = "0" + no;
+
+                    let trr = v.iAppearance.split(" ");
+
+                    let htm =
+                      '<div class="iboxLine">' +
+                      $.map(trr, function (e) {
+                        if (e == "") e = "00000";
+                        //else if (e.indexOf("X") < 0) e = e + ".jpg";
+                        //else e = e + ".png";
+                        return (
+                          '<a href="https://cdn.jsdelivr.net/gh/TianZonglin/sale/self/DSC' +
+                          e +
+                          '.jpg" data-lightbox="image-1" data-title="No.' +
+                          v.iNo +
+                          " " +
+                          v.iName +
+                          " €" +
+                          v.iPrice +
+                          '">' +
+                          '<img class="img" src="https://cdn.jsdelivr.net/gh/TianZonglin/sale/self/DSC' +
+                          e +
+                          '.jpg" /></a>'
+                        );
+                      }).join("");
+
+                    let clk_flag = true;
+                    let clk_url =
+                      "https://cdn.glitch.global/f1c7b686-0e39-43f2-8186-adb49d7f1137/icons8-plus-52.png?v=1689774239634";
+                    if ($.inArray(v.iNo, storeid) !== -1) {
+                      clk_flag = false;
+                      clk_url =
+                        "https://cdn.glitch.global/f1c7b686-0e39-43f2-8186-adb49d7f1137/icons8-correct-48%20(1).png?v=1689776633176";
+                    }
+
+                    htm +=
+                      '<div class="text-overlay"><b><span class="intro">No.' +
+                      no +
+                      "</span><br><span class='intro'>" +
+                      v.iName +
+                      "</span><br>";
+
+                    if (v.iTags != "") {
+                      htm +=
+                        "  <span class='intro'>" +
+                        getFresh(v.iFresh) +
+                        " / " +
+                        $.map(v.iTags.split(" "), function (e) {
+                          return e;
+                        }).join(" / ") +
+                        "</span><br>";
+                    }
+
+                    htm += '<span class="intro" style="">€' + pt + "</span></div>";
+
+                    if (v.iStatus != "SOLD")
+                      htm +=
+                        '<img value="' +
+                        v.iNo +
+                        '" value_p="' +
+                        v.iPrice +
+                        '" class="icon-overlay" flag="' +
+                        clk_flag +
+                        '" src="' +
+                        clk_url +
+                        '"/>';
+                    htm += "</b></div>";
+
+                    return htm;
+                  }).join(" ") +
+                  "<br>";
+              } else {
+                htmltext =
+                  txt +
+                  $.map(tmp, function (v) {
+                    let pt = v.iPrice;
+                    let tags = "";
+                    //if (v.iFresh == "1.0") tags += "[全新] ";
+                    //if (v.iPackage == "$") tags += "[带包装] ";
+
+                    if (v.iTime == "Oct") pt = v.iPrice + " / get it after 10.1";
+                    if (v.iStatus == "SOLD")
+                      pt = v.iPrice + "<span style='color:red'> (SOLD)</span>";
+
+                    let no = v.iNo;
+                    if (parseInt(no) < 10) no = "00" + no;
+                    else if (parseInt(no) < 100) no = "0" + no;
+
+                    let trr = v.iAppearance.split(" ");
+
+                    let tmphtm = "<br>";
+                    if (v.iTags != "") {
+                      tmphtm +=
+                        "<span class='intro'>" +
+                        $.map(v.iTags.split(" "), function (e) {
+                          return e;
+                        }).join(" / ") +
+                        "</span>";
+                    }
+
+                    let htm =
+                      '<div class="ibox">' +
+                      $.map(trr, function (e) {
+                        if (e == "") e = "00000";
+                        //else if (e.indexOf("X") < 0) e = e + ".jpg";
+                        //else e = e + ".png";
+                        return (
+                          '<a href="https://cdn.jsdelivr.net/gh/TianZonglin/sale/self/DSC' +
+                          e +
+                          '.jpg" data-lightbox="image-1" data-title="' +
+                          "No." +
+                          v.iNo +
+                          " " +
+                          v.iName +
+                          " €" +
+                          v.iPrice +
+                          '">' +
+                          '<img src="https://cdn.jsdelivr.net/gh/TianZonglin/sale/self/DSC' +
+                          e +
+                          '.jpg" /></a>'
+                        );
+                      }).join("") +
+                      '<br><span class="intro">' +
+                      v.iName +
+                      "</span>" +
+                      tmphtm +
+                      '<br><span class="intro" style=""><b>€' +
+                      pt +
+                      "</b></span>";
+
+                    if (tags != "") {
+                      htm += "  <span class='intro'>" + tags + "</span>";
+                    }
+
+                    let clk_flag = true;
+                    let clk_url =
+                      "https://cdn.glitch.global/f1c7b686-0e39-43f2-8186-adb49d7f1137/icons8-plus-52.png?v=1689774239634";
+                    if ($.inArray(v.iNo, storeid) !== -1) {
+                      clk_flag = false;
+                      clk_url =
+                        "https://cdn.glitch.global/f1c7b686-0e39-43f2-8186-adb49d7f1137/icons8-correct-48%20(1).png?v=1689776633176";
+                    }
+
+                    htm += '<div class="text-overlay"><span>' + no + "</span></div>";
+                    if (v.iStatus != "SOLD")
+                      htm +=
+                        '<img value="' +
+                        v.iNo +
+                        '" value_p="' +
+                        v.iPrice +
+                        '" class="icon-overlay" flag="' +
+                        clk_flag +
+                        '" src="' +
+                        clk_url +
+                        '"/>';
+                    htm += "</div>";
+
+                    return htm;
+                  }).join(" ");
+              }
+
+              if (mx) {
+                loadedItems += itemsPerBatch;
+
+                $(".jump-text").hide();
+
+                if (loadedItems < tmp_l) {
+                  htmltext +=
+                    "<div class='jump-text' style='margin-bottom:15px;'>" +
+                    "<img  style='margin-bottom:-2px;height:13px' class='ldimg' src='https://cdn.glitch.global/f1c7b686-0e39-43f2-8186-adb49d7f1137/loading.gif?v=1691874362695' />" +
+                    "<a id='appendmore' value='" +
+                    loadedItems +
+                    "' style='text-decoration:none;cursor:pointer'>" +
+                    "<span  class='ldimg' style='font-size:13px;margin-right:10px'> scroll or click to load more items." +
+                    "</span></a></div>";
+                }
+                $(ct).append(htmltext);
+              } else $(ct).html(htmltext);
+ 
+            }
+
+            $("body").show();
+
+ 
+            $("#cnt").html(
+              "当前总量: " +
+                jarr.length +
+                ", 地址: 3552AS <a style='float:right'>更新: " +
+                currentDate.toDateString() +
+                "</a>"
+            );
+          })
+          .catch((error) => {
+            console.log("Error:", error);
+          });
+        $("#whatsapp").click(function () {
+          window.open("https://api.whatsapp.com/send?phone=31620727621");
+        });
+        $("#wechat").click(function () {
+          window.open("weixin://");
+        });
+        
+ 
+      });
+    
+    </script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DQ8JDKPTYQ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-DQ8JDKPTYQ');
+    </script>
+    <!-- Hotjar Tracking Code for https://ieee.glitch.me/ -->
+    <script>
+        (function(h,o,t,j,a,r){
+            h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+            h._hjSettings={hjid:3580822,hjsv:6};
+            a=o.getElementsByTagName('head')[0];
+            r=o.createElement('script');r.async=1;
+            r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+    </script>
+  </head>
+  
+  
+
+  
+  
+  <body style="display: none">
+ 
+     <div class="navbk" >
+       
+      <div class="navbar"><br><br>
+        <a>主页 (ieee.glitch.me, Chinese only)</a>&nbsp;&nbsp;\&nbsp;
+        <a class="inav" href="/all.html"><b>全部物品</b></a>&nbsp;&nbsp;\&nbsp;
+        <a class="inav" href="/csv.html">列表模式</a> 
+        <a class="inav" id="enav" style="float:right" href="https://translate.google.com/translate?sl=auto&tl=en&u=https://ieee.glitch.me/all.html" target="_blank">EN</a> 
+      <hr />
+      </div>
+    </div>
+    <br /> 
+    
+    <div id="container">
+      <div id="all"></div>
+      <br />
+      <div id="all_content"></div>
+      <br />
+    </div>
+
+
+    <span style="font-size: 13px">联系方式：</span> <br />
+    <div style="display: inline-block; margin-top: 5px">
+      <div class="ibox2">
+        <img
+          src="https://cdn.glitch.global/f1c7b686-0e39-43f2-8186-adb49d7f1137/20230718003042.png?v=1689633083324"
+          height="100"
+        /><br />
+        <button class="btnc outline" id="wechat" style="line-height: 20px">
+          <a href="weixin://" target="_blank">微信</a>
+        </button>
+      </div>
+      <div class="ibox2">
+        <img
+          src="https://cdn.glitch.global/f1c7b686-0e39-43f2-8186-adb49d7f1137/20230718003054.jpg?v=1689633074371"
+          height="100"
+        /><br />
+        <button class="btnc outline" id="whatsapp" style="line-height: 20px">
+          <a href="https://api.whatsapp.com/send?phone=31620727621" target="_blank">WhatsApp</a>
+        </button>
+      </div>
+    </div>
+    <br />
+
+    <br />
+    <hr />
+    <div id="cnt"></div>
+    <br />
+  </body>
+
+</html>
