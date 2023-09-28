@@ -156,6 +156,14 @@ $(document).ready(function () {
         if (propertyB == "SOLD") return -1;
         return 0;
       });
+      storejarr.sort(function (a, b) {
+        var propertyA = a.iStatus; //parseInt(a.iTags);
+        var propertyB = b.iStatus; //parseInt(b.iTags);
+        if (propertyB == "SOLD") return -1;
+        return 0;
+      });
+    
+    
       //不重复的标签
       let uniqueTags = $.map(jarr, function (obj) {
         return obj.iTags.split(" ");
@@ -521,36 +529,36 @@ $(document).ready(function () {
         $("#alist").append(
           "序号,&nbsp;用户,&nbsp;分类,&nbsp;新旧/全新1.0,&nbsp;名称,&nbsp;总价/欧元,&nbsp;可售时间,&nbsp;包装,&nbsp;主题分类,&nbsp;外观,&nbsp;状态,&nbsp;<br>"
         );
-        conso//le.log(jarr);
-        for (let i = 0; i < jarr.storelength; i++) {
+        //conso//le.log(jarr);
+        for (let i = 0; i < storejarr.length; i++) {
 
-          let no = jarr[storejarrNo;
+          let no = storejarr[i].iNo;
           if (parseInt(no) < 10) no = "00" + no;
           else if (parseInt(no) < 100) no = "0" + no;
-          if (jarr[storejarrStatus == "SOLD")
+          if (storejarr[i].iStatus == "SOLD")
             $("#alist").append(
               "<span style='color:red'>No." +
                 no +
                 ",&nbsp;" +                
-                jarr[storejarrUsers +
+                storejarr[i].iUsers +
                 ",&nbsp;" +
-                     storejarr[i].iClass +
-           ",&nbsp;" +
-                getFresh2(jarr[storejarrFresh) +
+                storejarr[i].iClass +
                 ",&nbsp;" +
-                jarr[storejarrName +
+                getFresh2(storejarr[i].iFresh) +
                 ",&nbsp;" +
-                jarr[storejarrPrice +
+                storejarr[i].iName +
                 ",&nbsp;" +
-                jarr[storejarrTime +
+                storejarr[i].iPrice +
                 ",&nbsp;" +
-                jarr[storejarrPackage +
+                storejarr[i].iTime +
                 ",&nbsp;" +
-                jarr[storejarrTags +
+                storejarr[i].iPackage +
                 ",&nbsp;" +
-                jarr[storejarrAppearance +
+                storejarr[i].iTags +
                 ",&nbsp;" +
-                jarr[storejarrStatus +
+                storejarr[i].iAppearance +
+                ",&nbsp;" +
+                storejarr[i].iStatus +
                 ",&nbsp;</span><br>"
             );
           else
@@ -558,25 +566,25 @@ $(document).ready(function () {
               "No." +
                 no +
                 ",&nbsp;" +                
-                jarr[storejarrUsers +
+                storejarr[i].iUsers +
                 ",&nbsp;" +
-                jarr[storejarrClass +
+                storejarr[i].iClass +
                 ",&nbsp;" +
-                getFresh2(jarr[storejarrFresh) +
+                getFresh2(storejarr[i].iFresh) +
                 ",&nbsp;" +
-                jarr[storejarrName +
+                storejarr[i].iName +
                 ",&nbsp;" +
-                jarr[storejarrPrice +
+                storejarr[i].iPrice +
                 ",&nbsp;" +
-                jarr[storejarrTime +
+                storejarr[i].iTime +
                 ",&nbsp;" +
-                jarr[storejarrPackage +
+                storejarr[i].iPackage +
                 ",&nbsp;" +
-                jarr[storejarrTags +
+                storejarr[i].iTags +
                 ",&nbsp;" +
-                jarr[storejarrAppearance +
+                storejarr[i].iAppearance +
                 ",&nbsp;" +
-                jarr[storejarrStatus +
+                storejarr[i].iStatus +
                 ",&nbsp;<br>"
             );
         }
