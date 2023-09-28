@@ -139,10 +139,10 @@ $(document).ready(function () {
       }else if(storeclass!=null){
         jarr = jarr.filter((obj) => isArrayInArray(storeclass,obj.iClass));
       }
+    
+      storejarr = jarr;
       //jarr = jarr.filter((obj) => (obj.iTime == "Now"));
-      jarr = jarr.filter((obj) => (obj.iStatus != "SOLD"));
-
-      //按类别排序
+      jarr = jarr.filter((obj) => (obj.iStatus != "SOLD"));   //按类别排序
       jarr.sort(function (a, b) {
         var propertyA = a.iTags; //parseInt(a.iTags);
         var propertyB = b.iTags; //parseInt(b.iTags);
@@ -959,11 +959,10 @@ $(document).ready(function () {
           .replaceAll(" ", "")
           .split(",");
         //console.log(storeid);
-        jarr = jarr.filter((obj) => storeid.includes(obj.iNo));
+        jarr store= jarr.storejarrer((obj) => storeid.includes(obj.iNo));
         creats(
           "#olist",
-          jarr,
-          "<b>物品总价：€ <span id='countall'></span>" +
+          jarr,storejarr       "<b>物品总价：€ <span id='countall'></span>" +
             "<br>物品编号：" +
             storeid.toString().replaceAll(",", ", ") +
             "</b>",
