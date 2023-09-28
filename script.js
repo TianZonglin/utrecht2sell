@@ -896,9 +896,9 @@ $(document).ready(function () {
                   '"/>';
             
               htm +=
-                '<div class="text-overlay-user" style="font-size:5px !important;color:#80808026;bottom:4px !important;right:4px !important;"><b><span>#' +
+                '<div class="text-overlay-user" style="font-size:5px !important;color:#000;bottom:4px !important;right:4px !important;"><b><span>#' +
                 v.iUsers +
-                "**的物品</span></div>";
+                "**'s item</span></div>";
             
               htm += "</div>";
 
