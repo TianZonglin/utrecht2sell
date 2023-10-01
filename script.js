@@ -144,8 +144,8 @@ $(document).ready(function () {
       //jarr = jarr.filter((obj) => (obj.iTime == "Now"));
       jarr = jarr.filter((obj) => (obj.iStatus != "SOLD"));   //按类别排序
       jarr.sort(function (a, b) {
-        var propertyA = a.iTags; //parseInt(a.iTags);
-        var propertyB = b.iTags; //parseInt(b.iTags);
+        var propertyA = parseInt(a.iPrice);
+        var propertyB = parseInt(b.iPrice);
         if (propertyA < propertyB) return 1;
         if (propertyA > propertyB) return -1;
         return 0;
@@ -343,7 +343,7 @@ $(document).ready(function () {
         storefunc = "indexClass";
         storetmp = temp;
         $("#cls_content").html("");
-        creats("#cls_content", storetmp, "按品类排序：", true);
+        creats("#cls_content", storetmp, "按价格排序：", true);
       });
 
       $(window).on("scroll", () => {
@@ -355,20 +355,20 @@ $(document).ready(function () {
             storefunc == "indexClass" &&
             scrollPosition + windowHeight >= documentHeight - 150
           ) {
-            creats("#cls_content", storetmp, "按品类排序：", true);
+            creats("#cls_content", storetmp, "按价格排序：", true);
           } else if (
             storefunc == "indexAll" &&
             scrollPosition + windowHeight >= documentHeight - 150
           ) {
-            creats("#blist", storetmp, "按品类排序：", true);
+            creats("#blist", storetmp, "按价格排序：", true);
           } else {}
         }
       });
       $("body").on("click", "#appendmore", function () {
         if (storefunc == "indexClass") {
-          creats("#cls_content", storetmp, "按品类排序：", true);
+          creats("#cls_content", storetmp, "按价格排序：", true);
         } else if (storefunc == "indexAll") {
-          creats("#blist", storetmp, "按品类排序：", true);
+          creats("#blist", storetmp, "按价格排序：", true);
         } else {
         }
       });
@@ -390,7 +390,7 @@ $(document).ready(function () {
         let temp = $.grep(jarr, function (obj) {
           return obj.iTags.includes(event.target.value);
         });
-        creats("#tag_content", temp, "按品类排序：", false);
+        creats("#tag_content", temp, "按价格排序：", false);
         //$("#olist").show();
       });
 
@@ -417,7 +417,7 @@ $(document).ready(function () {
             )
           );
         });
-        creats("#day_content", temp, "<br>按品类排序：", false);
+        creats("#day_content", temp, "<br>按价格排序：", false);
         //$("#olist").show();
       });
 
@@ -468,7 +468,7 @@ $(document).ready(function () {
               xtmp = $.grep(jarr, function (obj) {
                 return obj.iTags.includes(storet);
               });
-              creats("#tag_content", xtmp, "按品类排序：", false);
+              creats("#tag_content", xtmp, "按价格排序：", false);
             }
             //console.log(stored,storec);
             if (stored != null) {
@@ -484,10 +484,10 @@ $(document).ready(function () {
                   )
                 );
               });
-              creats("#day_content", xtmp, "<br>按品类排序：", false);
+              creats("#day_content", xtmp, "<br>按价格排序：", false);
             }
             if (storec != null && storec == "all") {
-              creats("#blist", jarr, "按品类排序：", false);
+              creats("#blist", jarr, "按价格排序：", false);
             } else {
               if (storec == "zero") {
                 xtmp = $.grep(jarr, function (obj) {
@@ -514,7 +514,7 @@ $(document).ready(function () {
                   return obj.iClass.includes(storec);
                 });
               }
-              creats("#cls_content", xtmp, "按品类排序：", false);
+              creats("#cls_content", xtmp, "按价格排序：", false);
             }
           }
         }
@@ -627,7 +627,7 @@ $(document).ready(function () {
 
         storetmp = jarr;
 
-        creats("#blist", storetmp, "按品类排序：", true);
+        creats("#blist", storetmp, "按价格排序：", true);
 
         if (isWeChatBrowser()) {
           $("#enav").hide();
