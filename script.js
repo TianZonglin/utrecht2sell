@@ -122,7 +122,7 @@ $(document).ready(function () {
           iDate: items[iDate].replaceAll(/\r/g, ""),
         });
 
-        storeid_p[parseInt(items[iNo])] = parseInt(items[iPrice]);
+        storeid_p[parseFloat(items[iNo])] = parseFloat(items[iPrice]);
 
       }
 
@@ -144,8 +144,8 @@ $(document).ready(function () {
       //jarr = jarr.filter((obj) => (obj.iTime == "Now"));
       jarr = jarr.filter((obj) => (obj.iStatus != "SOLD"));   //按类别排序
       jarr.sort(function (a, b) {
-        var propertyA = parseInt(a.iPrice);
-        var propertyB = parseInt(b.iPrice);
+        var propertyA = parseFloat(a.iPrice);
+        var propertyB = parseFloat(b.iPrice);
         if (propertyA < propertyB) return 1;
         if (propertyA > propertyB) return -1;
         return 0;
@@ -424,7 +424,7 @@ $(document).ready(function () {
       // 点击加号
       $("body").on("click", ".icon-overlay", function () {
         let val = $(this).attr("value");
-        let val_p = parseInt($(this).attr("value_p"));
+        let val_p = parseFloat($(this).attr("value_p"));
         let isAdding = JSON.parse($(this).attr("flag"));
 
         $(this).toggleClass("icon-clicked");
