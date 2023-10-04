@@ -720,7 +720,7 @@ $(document).ready(function () {
               
               if (v.iTime == "Oct") pt = v.iPrice + " / get it after 10.1";
               if (v.iStatus == "SOLD"){
-                gray = " style='filter: grayscale(80%) contrast(0.5);pointer-events: none;' ";
+                gray = " style='filter: grayscale(80%) contrast(0.5);' ";//pointer-events: none;
                 pt = v.iPrice + "<span> × SOLD</span>";
               }else{
                 gray = "";
@@ -814,7 +814,7 @@ $(document).ready(function () {
 
               if (v.iTime == "Oct") pt = v.iPrice + " / get it after 10.1";
               if (v.iStatus == "SOLD"){
-                gray = " style='filter: grayscale(80%) contrast(0.5);pointer-events: none;'";
+                gray = " style='filter: grayscale(80%) contrast(0.5);'";//pointer-events: none;
                 pt = v.iPrice + "<span> × SOLD</span>";
               }else{
                 gray = "";
