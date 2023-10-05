@@ -1022,7 +1022,7 @@ $(document).ready(function () {
             "</a>"
         );
       }else{
-        $("body").html("<br><br><a style='color:blue' href='https://u2s.glitch.me/?t=%E8%BF%90%E5%8A%A8,%E6%BA%9C%E5%86%B0,%E7%BB%98%E7%94%BB,%E6%89%8B%E5%B7%A5,%E5%A4%96%E5%87%BA%E8%AE%BE%E5%A4%87'>目前仅开放部分内容 => &#x1F604;</a>");
+        $("body").html("<br><br><a style='color:blue' href='https://u2s.glitch.me/?x=3552as'>前往详情页面 => &#x1F604;</a>");
  
           
       }
