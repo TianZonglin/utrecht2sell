@@ -239,7 +239,7 @@ $(document).ready(function () {
       let today = new Date();
       //不重复的标签
       let newjarr = $.grep(jarr, function (obj) { 
-        return obj.iDate.includes("2023-9-28");
+        return obj.iDate.includes("2023-10-5");
       });
 
       //不重复的标签
