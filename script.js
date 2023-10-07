@@ -233,7 +233,7 @@ $(document).ready(function () {
       let newjarr = $.grep(jarr, function (obj) { 
   
         let tmp = obj.iDate.split("-");
-        return tmp[2] + 5 > today.getDate();
+        return (parseInt(tmp[1]) == today.getMonth() + 1) && (parseInt(tmp[2]) + 5 > today.getDate());
        
       });
     
