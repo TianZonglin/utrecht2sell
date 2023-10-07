@@ -233,7 +233,7 @@ $(document).ready(function () {
       let newjarr = $.grep(jarr, function (obj) { 
   
         let tmp = obj.iDate.split("-");
-        return (parseInt(tmp[1]) == today.getMonth() + 1) && (parseInt(tmp[2]) + 5 > today.getDate());
+        return (parseInt(tmp[1]) == today.getMonth() + 1) && (parseInt(tmp[2]) + 7 > today.getDate());
        
       });
     
@@ -405,13 +405,11 @@ $(document).ready(function () {
           stored = null;
         }
         let temp = $.grep(jarr, function (obj) {
+          let tp = obj.iDate.split("-");
           return (
             obj.iTags.includes(event.target.value) &&
-            obj.iDate.includes(
-              [today.getFullYear(), today.getMonth() + 1, today.getDate()].join(
-                "-"
-              )
-            )
+            (parseInt(tp[1]) == today.getMonth() + 1) && (parseInt(tp[2]) + 7 > today.getDate())
+       
           );
         });
         creats("#day_content", temp, "<br>按价格排序：", false);
