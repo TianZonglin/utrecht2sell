@@ -228,19 +228,19 @@ $(document).ready(function () {
 
 
 
-      //let today = new Date();
-      //不重复的标签
-      //let newjarr = $.grep(jarr, function (obj) { 
-      //  return obj.iDate.includes(
-      //    [today.getFullYear(), today.getMonth() + 1, today.getDate()].join("-")
-      // );
-      //});
-    
       let today = new Date();
       //不重复的标签
       let newjarr = $.grep(jarr, function (obj) { 
-        return obj.iDate.includes("2023-10-5");
+        return obj.iDate.filter(function (value, index, self) {
+          return self.indexOf(value) === index;
+        });
+        
+        .includes(
+          [today.getFullYear(), today.getMonth() + 1, today.getDate()].join("-")
+       );
       });
+    
+  
 
       //不重复的标签
       let uniqueDayTags = $.map(newjarr, function (obj) {
