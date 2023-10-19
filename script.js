@@ -1017,7 +1017,7 @@ $(document).ready(function () {
             "</a>"
         );
       }else{
-        $("body").html("<br><br><a style='color:blue' href='https://u2s.glitch.me/?x=3552as'>前往详情页面 => &#x1F604;</a>");
+        $("body").html("<br><br><a style='color:blue' href='https://u2s.glitch.me/?x=3552as'></a>");
  
           
       }
