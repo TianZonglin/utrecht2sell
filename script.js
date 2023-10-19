@@ -1017,8 +1017,9 @@ $(document).ready(function () {
             "</a>"
         );
       }else{
-        $("body").html("<br><br><a style='color:blue' href='https://u2s.glitch.me/?x=3552as'></a>");
- 
+        $("#clist").hide();
+        $(".bluelist").hide();
+        $("#users").show();
           
       }
      
