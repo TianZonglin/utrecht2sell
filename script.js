@@ -776,7 +776,7 @@ $(document).ready(function () {
                   "</span><br>";
               }
 
-              htm += '<span class="intro" style="color:red">€' + pt + "</span></div>";
+              htm += '<span class="intro" style="color:#FF9595">€' + pt + "</span></div>";
               htm +=
                 '<div class="text-overlay-user"><b><span style="color:#00000080">#' +
                 v.iUsers +
@@ -858,7 +858,7 @@ $(document).ready(function () {
                 v.iName +
                 "</span>" +
                 tmphtm +
-                '<br><span class="intro" style="color:red"><b>€ ' +
+                '<br><span class="intro" style="color:#FF9595"><b>€ ' +
                 pt +
                 "</b></span>";
 
