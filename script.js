@@ -1017,9 +1017,9 @@ $(document).ready(function () {
             "</a>"
         );
       }else{
-        $("#clist").hide();
-        $(".bluelist").hide();
-        $("#users").show();
+        //$("#clist").hide();
+        //$(".bluelist").hide();
+        //$("#users").show();
           
       }
      
