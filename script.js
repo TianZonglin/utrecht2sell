@@ -941,7 +941,7 @@ $(document).ready(function () {
             jarr.length +
             "(" +
             count +
-            "), 自取地址: <a href='https://maps.app.goo.gl/1xSBcypjtKVDYpbz5' target='_blank' style='color:blue'>3552AS</a> <a style='float:right'>更新: " +
+            "), 自取地址: <a href='https://maps.app.goo.gl/1xSBcypjtKVDYpbz5' style='color:blue'>3552AS</a> <a style='float:right'>更新: " +
             currentDate.toDateString() +
             "</a>"
         );
@@ -998,7 +998,7 @@ $(document).ready(function () {
             jarr.length +
             "(" +
             count +
-            "), 自取地址: <a href='https://maps.app.goo.gl/1xSBcypjtKVDYpbz5' target='_blank' style='color:blue'>3552AS</a> <a style='float:right'>更新: " +
+            "), 自取地址: <a href='https://maps.app.goo.gl/1xSBcypjtKVDYpbz5' style='color:blue'>3552AS</a> <a style='float:right'>更新: " +
             currentDate.toDateString() +
             "</a>"
         );
@@ -1012,7 +1012,7 @@ $(document).ready(function () {
             jarr.length +
             "(" +
             count +
-            "), 自取地址: <a href='https://maps.app.goo.gl/1xSBcypjtKVDYpbz5' target='_blank' style='color:blue'>3552AS</a> <a style='float:right'>更新: " +
+            "), 自取地址: <a href='https://maps.app.goo.gl/1xSBcypjtKVDYpbz5' style='color:blue'>3552AS</a> <a style='float:right'>更新: " +
             currentDate.toDateString() +
             "</a>"
         );
