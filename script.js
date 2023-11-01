@@ -276,8 +276,8 @@ $(document).ready(function () {
             '<button class="btnc outline" value="fresh">全新未用</button>' +
             '<button class="btnc outline" value="fresh9">九成新</button>' +
             '<button class="btnc outline" value="price10">10欧及以上</button>' +
-            '<button class="btnc outline" value="price5">5-9欧</button>' +
-            '<button class="btnc outline" value="price1">1-4欧</button>' +
+            '<button class="btnc outline" value="price5">5~9欧</button>' +
+            '<button class="btnc outline" value="price1">1~4欧</button>' +
             //'<button class="btnc outline" value="fresh8">八成新</button>' +
             '<button class="btnc outline" value="zero">赠品</button>' +
             '<button class="btnc outline" style="display:none" id="sqhidec" value="reset">收起</button>'
