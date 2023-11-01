@@ -275,7 +275,10 @@ $(document).ready(function () {
           '<button class="btnc outline" value="package">包装完好</button>' +
             '<button class="btnc outline" value="fresh">全新未用</button>' +
             '<button class="btnc outline" value="fresh9">九成新</button>' +
-            '<button class="btnc outline" value="fresh8">八成新</button>' +
+            '<button class="btnc outline" value="price1">1-4欧</button>' +
+            '<button class="btnc outline" value="price5">5-9欧</button>' +
+            '<button class="btnc outline" value="price10">10欧及以上</button>' +
+            //'<button class="btnc outline" value="fresh8">八成新</button>' +
             '<button class="btnc outline" value="zero">赠品</button>' +
             '<button class="btnc outline" style="display:none" id="sqhidec" value="reset">收起</button>'
         );
@@ -316,6 +319,18 @@ $(document).ready(function () {
         } else if (event.target.value == "fresh9") {
           temp = $.grep(jarr, function (obj) {
             return obj.iFresh.includes("0.9");
+          });
+        } else if (event.target.value == "price1") {
+          temp = $.grep(jarr, function (obj) {
+            return obj.iPrice > 0 && obj.iPrice < 5;
+          });
+        } else if (event.target.value == "price5") {
+          temp = $.grep(jarr, function (obj) {
+            return obj.iPrice > 4 && obj.iPrice < 10;
+          });
+        } else if (event.target.value == "price10") {
+          temp = $.grep(jarr, function (obj) {
+            return obj.iPrice >= 10;
           });
         } else if (event.target.value == "fresh8") {
           temp = $.grep(jarr, function (obj) {
