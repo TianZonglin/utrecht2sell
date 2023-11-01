@@ -279,7 +279,7 @@ $(document).ready(function () {
             '<button class="btnc outline" value="price5">5~9欧</button>' +
             '<button class="btnc outline" value="price1">1~4欧</button>' +
             //'<button class="btnc outline" value="fresh8">八成新</button>' +
-            '<button class="btnc outline" value="zero">赠品</button>' +
+            '<button class="btnc outline" value="zero">免费送</button>' +
             '<button class="btnc outline" style="display:none" id="sqhidec" value="reset">收起</button>'
         );
       }
