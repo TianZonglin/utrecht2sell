@@ -748,16 +748,16 @@ $(document).ready(function () {
                   //else if (e.indexOf("X") < 0) e = e + ".jpg";
                   //else e = e + ".png";
                   return (
-                    '<a href="https://cdn.jsdelivr.net/gh/TianZonglin/sale/self/DSC' +
+                    '<a href="https://cdn.jsdelivr.net/gh/zonelyn/img/' +
                     e +
-                    '.jpg" data-lightbox="image-1" data-title="' +
+                    '" data-lightbox="image-1" data-title="' +
                     v.iName +" / "+
                     " €" +
                     v.iPrice +
                     '">' +
-                    '<img class="img" src="https://cdn.jsdelivr.net/gh/TianZonglin/sale/self/DSC' +
+                    '<img class="img" src="https://cdn.jsdelivr.net/gh/zonelyn/img/' +
                     e +
-                    '.jpg" /></a>'
+                    '" /></a>'
                   );
                 }).join("");
 
@@ -852,9 +852,9 @@ $(document).ready(function () {
                   //else if (e.indexOf("X") < 0) e = e + ".jpg";
                   //else e = e + ".png";
                   return (
-                    '<a href="https://cdn.jsdelivr.net/gh/TianZonglin/sale/self/DSC' +
+                    '<a href="https://cdn.jsdelivr.net/gh/zonelyn/img/' +
                     e +
-                    '.jpg" data-lightbox="image-1" data-title="' +
+                    '" data-lightbox="image-1" data-title="' +
                     "No." +
                     v.iNo +
                     " / " +
@@ -862,9 +862,9 @@ $(document).ready(function () {
                     " €" +
                     v.iPrice +
                     '">' +
-                    '<img src="https://cdn.jsdelivr.net/gh/TianZonglin/sale/self/DSC' +
+                    '<img src="https://cdn.jsdelivr.net/gh/zonelyn/img/' +
                     e +
-                    '.jpg" /></a>'
+                    '" /></a>'
                   );
                 }).join("") +
                 '<br><span class="intro">' +
@@ -903,10 +903,10 @@ $(document).ready(function () {
                   clk_url +
                   '"/>';
             
-              htm +=
-                '<div class="text-overlay-user" style="font-size:5px !important;color:#00000080;bottom:4px !important;right:4px !important;"><b><span>#' +
-                v.iUsers +
-                "**</span></div>";
+              //htm +=
+              //  '<div class="text-overlay-user" style="font-size:5px !important;color:#00000080;bottom:4px !important;right:4px !important;"><b><span>#' +
+              //  v.iUsers +
+              //  "**</span></div>";
             
               htm += "</div>";
 
@@ -1083,6 +1083,7 @@ $(document).ready(function () {
   $("#wechat").click(function () {
     window.open("weixin://");
   });
+
 
   if (isWeChatBrowser()) {
     $("#whatsapp").hide();
