@@ -196,13 +196,13 @@ $(document).ready(function () {
       });
 
       //生成标签
-      //$("#cls").html(
-      ////  $.map(uniqueClass, function (v) {
-      ////    return (
-      //      '<button class="btnc outline" value="' + v + '">' + v + "</button>"
-      //    );
-      //  }).join("")
-      //);
+      $("#cls").html(
+        $.map(uniqueClass, function (v) {
+          return (
+            '<button class="btnc outline" value="' + v + '">' + v + "</button>"
+          );
+        }).join("")
+      );
 
       $("#tag").html(
         $.map(uniqueTags, function (v) {
@@ -273,6 +273,9 @@ $(document).ready(function () {
         ); 
       }else{
         $("#cls").append(
+          '<button class="btnc outline" value="package">包装完好</button>' +
+            '<button class="btnc outline" value="fresh">全新未用</button>' +
+            '<button class="btnc outline" value="fresh9">九成新</button>' +
             '<button class="btnc outline" value="price10">10欧及以上</button>' +
             '<button class="btnc outline" value="price5">5~9欧</button>' +
             '<button class="btnc outline" value="price1">1~4欧</button>' +
