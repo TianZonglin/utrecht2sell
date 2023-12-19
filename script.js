@@ -40,7 +40,7 @@ $(document).ready(function () {
   } 
   
   fetch(
-    "https://docs.google.com/spreadsheets/d/e/2PACX-1vT5AeaNQiGQU8WYNKagxCiwFp36LRaX0w06oFleiz14NNb0_YgVxY2VpP8C4PeBi2gu6qwwcC8IlzZA/pub?gid=0&single=true&output=csv"
+    "https://docs.google.com/spreadsheets/d/e/2PACX-1vTjLHFu3SqqXZHqA5ZVrO7A1U6ozpdwn93EHlHRGY8A5AY0VlzR5xx4sCIqJ0bEJ9tHMDxGJmcZqYLL/pub?gid=655900093&single=true&output=csv"
   )
     .then((response) => response.text())
     .then((data) => {
@@ -119,7 +119,7 @@ $(document).ready(function () {
           iFresh: items[iFresh],
           iAppearance: items[iAppearance],
           iStatus: items[iStatus],
-          iDate: items[iDate].replaceAll(/\r/g, ""),
+          iDate: items[iDate],
         });
 
         storeid_p[parseFloat(items[iNo])] = parseFloat(items[iPrice]);
